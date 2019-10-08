@@ -8,7 +8,7 @@ import com.google.semantic.response.SentimentResponseBean;
 
 public interface LanguageAnalyzeService {
 	
-	public Map<String,SentimentResponseBean> languageAnalysis(List<String>twitter);
+	public Map<String,SentimentResponseBean> languageAnalysis(List<String>twitter) throws IOException;
 
 	
 

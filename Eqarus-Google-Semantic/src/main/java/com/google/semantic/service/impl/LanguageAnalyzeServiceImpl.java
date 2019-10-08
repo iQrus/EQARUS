@@ -18,7 +18,7 @@ public class LanguageAnalyzeServiceImpl implements LanguageAnalyzeService {
 	
 	
 	@Override
-	public Map<String, SentimentResponseBean> languageAnalysis(List<String> twitter)  {
+	public Map<String, SentimentResponseBean> languageAnalysis(List<String> twitter) throws IOException  {
 		
 		Map<String,SentimentResponseBean> sentimentsMap= new HashMap<>();
 		
@@ -49,9 +49,7 @@ public class LanguageAnalyzeServiceImpl implements LanguageAnalyzeService {
 		     }
 
 		}
-		catch(IOException e) {
-			System.out.println(e.getLocalizedMessage());
-		}	
+		
    System.out.println(sentimentsMap.size());
 		return sentimentsMap;
 

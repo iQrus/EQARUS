@@ -1,5 +1,6 @@
 package com.google.semantic.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 import java.util.Map;
@@ -22,7 +23,7 @@ public class HomeController {
 	private LanguageAnalyzeService languageAnalyzeService;
 	
 	@PostMapping("/home")
-	public SentimentWrapperResponse getLanguageAnalysis(@RequestBody TwitterRequestBean twitterRequestBean)  {
+	public SentimentWrapperResponse getLanguageAnalysis(@RequestBody TwitterRequestBean twitterRequestBean) throws IOException  {
 		
 		Map<String, SentimentResponseBean> semanticResponseMap=new HashMap<>();
 		SentimentWrapperResponse sentimentWrapperResponse=new SentimentWrapperResponse();
