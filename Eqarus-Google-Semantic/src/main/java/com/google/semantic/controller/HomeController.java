@@ -5,6 +5,8 @@ import java.util.HashMap;
 
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,14 +26,15 @@ public class HomeController {
 	
 	@PostMapping("/home")
 	public SentimentWrapperResponse getLanguageAnalysis(@RequestBody TwitterRequestBean twitterRequestBean) throws IOException  {
-		
-		Map<String, SentimentResponseBean> semanticResponseMap=new HashMap<>();
-		SentimentWrapperResponse sentimentWrapperResponse=new SentimentWrapperResponse();
+		 final Logger logger = LoggerFactory.getLogger(this.getClass());
+		 logger.info("Inside the method SentimentWrapperResponse getLanguageAnalysis()");
+		Map<String, SentimentResponseBean> semanticResponseMap = new HashMap<>();
+		SentimentWrapperResponse sentimentWrapperResponse = new SentimentWrapperResponse();
 		
 		if(null!=twitterRequestBean)
-		semanticResponseMap=languageAnalyzeService.languageAnalysis(twitterRequestBean.getTwitterDataList());
+		  semanticResponseMap=languageAnalyzeService.languageAnalysis(twitterRequestBean.getTwitterDataList());
 		if(null!=semanticResponseMap)
-			sentimentWrapperResponse.setSentimentResponseMap(semanticResponseMap);
+		  sentimentWrapperResponse.setSentimentResponseMap(semanticResponseMap);
 		return sentimentWrapperResponse;
 		
 		
