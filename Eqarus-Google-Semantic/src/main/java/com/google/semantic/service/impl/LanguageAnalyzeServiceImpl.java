@@ -8,9 +8,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Service;
+
+import com.google.cloud.language.v1.AnalyzeSentimentResponse;
 import com.google.cloud.language.v1.Document;
 import com.google.cloud.language.v1.Document.Type;
 import com.google.cloud.language.v1.LanguageServiceClient;
+import com.google.cloud.language.v1.Sentence;
 import com.google.cloud.language.v1.Sentiment;
 
 @Service
@@ -34,13 +37,16 @@ public class LanguageAnalyzeServiceImpl implements LanguageAnalyzeService {
 		     
 		      // Detects the sentiment of the text
 		     try {
-		    	 Sentiment sentiment = language.analyzeSentiment(doc).getDocumentSentiment();
-		    	 sentimentBean.setMagnitude(sentiment.getMagnitude());
-		    	 sentimentBean.setScore(sentiment.getScore());
-		    	 sentimentsMap.put(textLanguage, sentimentBean);
-		    	 // System.out.printf("Text: %s%n", textLanguage);
-		    	 System.out.printf("Sentiment: %s, %s%n", sentiment.getScore(), sentiment.getMagnitude());
-
+		    	 AnalyzeSentimentResponse response = language.analyzeSentiment(doc);
+		    	 List<Sentence> sentimentList= response.getSentencesList();
+		    	 for(Sentence sent : sentimentList) {
+		    		 Sentiment sentiment = sent.getSentiment();
+			    	 sentimentBean.setMagnitude(sentiment.getMagnitude());
+			    	 sentimentBean.setScore(sentiment.getScore());
+			    	 sentimentsMap.put(textLanguage, sentimentBean);
+			    	 // System.out.printf("Text: %s%n", textLanguage);
+			    	 System.out.printf("Sentiment:  Score : %s \n Magnitude:  %s \n Text : %s \n", sentiment.getScore(), sentiment.getMagnitude(),textLanguage);
+		    	 }
 		     }
 
 		     catch(Exception e) {
