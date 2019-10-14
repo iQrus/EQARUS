@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.semantic.bean.TwitterRequestBean;
+import com.google.semantic.constants.GoogleSemanticConstants;
 import com.google.semantic.response.SentimentResponseBean;
 import com.google.semantic.response.SentimentWrapperResponse;
 import com.google.semantic.service.LanguageAnalyzeService;
@@ -24,10 +25,12 @@ public class HomeController {
 	@Autowired
 	private LanguageAnalyzeService languageAnalyzeService;
 	
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	@PostMapping("/home")
 	public SentimentWrapperResponse getLanguageAnalysis(@RequestBody TwitterRequestBean twitterRequestBean) throws IOException  {
-		 final Logger logger = LoggerFactory.getLogger(this.getClass());
-		 logger.info("Inside the method SentimentWrapperResponse getLanguageAnalysis()");
+		 
+		 logger.info(GoogleSemanticConstants.SENTIMENT_WRAPPER_RESPONSE_LOGGER);
 		Map<String, SentimentResponseBean> semanticResponseMap = new HashMap<>();
 		SentimentWrapperResponse sentimentWrapperResponse = new SentimentWrapperResponse();
 		
