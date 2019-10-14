@@ -43,7 +43,7 @@ public class LanguageAnalyzeServiceImpl implements LanguageAnalyzeService {
 					Sentiment sentiment = sent.getSentiment();
 					sentimentResponseBean.setMagnitude(sentiment.getMagnitude());
 					sentimentResponseBean.setScore(sentiment.getScore());
-					String key=sent.getText().getContent().replaceAll("[^a-zA-Z0-9]", " ");
+					String key=sent.getText().getContent().replaceAll("[^a-zA-Z0-9]", " ").trim();
 					sentimentsMap.put(key, sentimentResponseBean);
 				}
 			}
