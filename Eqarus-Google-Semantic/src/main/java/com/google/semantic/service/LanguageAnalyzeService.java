@@ -5,10 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 import com.google.semantic.response.SentimentResponseBean;
+import com.google.semantic.response.SentimentWrapperResponse;
 
 public interface LanguageAnalyzeService {
 	
-	public Map<String,SentimentResponseBean> languageAnalysis(List<String>twitter) throws IOException;
+	public SentimentWrapperResponse languageAnalysis(List<String>twitter) throws IOException;
 
 	
 
