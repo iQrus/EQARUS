@@ -40,7 +40,7 @@ public class LanguageAnalyzeServiceImpl implements LanguageAnalyzeService {
 		if(twitter != null) {
 			for(String tweet : twitter) {
 				input.append(tweet.replaceAll("(@[A-Za-z0-9]+)|([^0-9A-Za-z \\t])|(\\w+:\\/\\/\\S+)", " ").trim());
-				input.append(".");
+				input.append(". ");
 			}
 		}else {
 			logger.info("List of tweets is null");
