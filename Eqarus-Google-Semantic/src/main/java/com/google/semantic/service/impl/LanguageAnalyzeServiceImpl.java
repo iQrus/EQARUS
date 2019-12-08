@@ -46,9 +46,7 @@ public class LanguageAnalyzeServiceImpl implements LanguageAnalyzeService {
 		String temp = "";
 		if(twitter != null) {
 			for(String tweet : twitter) {
-				temp = tweet.replaceAll("(@[A-Za-z0-9]+)|([^0-9A-Za-z \\t])|(\\w+:\\/\\/\\S+)", " ").trim();
-				
-					
+				temp = tweet.replaceAll("(@[A-Za-z0-9]+)|([^0-9A-Za-z \\t])|(\\w+:\\/\\/\\S+)", " ").trim();	
 				input.append(temp);
 				input.append(". ");
 				if(tweetLocationList != null && tweetLocationList.containsKey(tweet)) {
