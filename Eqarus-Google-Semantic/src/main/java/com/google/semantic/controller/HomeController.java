@@ -29,8 +29,8 @@ public class HomeController {
 			throws IOException {
 		final Logger logger = LoggerFactory.getLogger(this.getClass());
 		logger.info("Inside the method SentimentWrapperResponse getLanguageAnalysis()");
-		List<SentimentResponseBean> responseList = null;
-		return languageAnalyzeService.languageAnalysis(twitterRequestBean.getTwitterDataList());
+		//List<SentimentResponseBean> responseList = null;
+		return languageAnalyzeService.languageAnalysis(twitterRequestBean);
 
 	}
 
