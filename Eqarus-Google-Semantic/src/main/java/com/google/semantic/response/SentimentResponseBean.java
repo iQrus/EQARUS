@@ -4,6 +4,7 @@ import java.util.Map;
 
 public class SentimentResponseBean {
 
+	private String application;
 	private float magnitude;
 	private float score;
 	private String text;
@@ -66,6 +67,14 @@ public class SentimentResponseBean {
 
 	public void setSentimentScore(int sentimentScore) {
 		this.sentimentScore = sentimentScore;
+	}
+
+	public String getApplication() {
+		return application;
+	}
+
+	public void setApplication(String application) {
+		this.application = application;
 	}
 	
 

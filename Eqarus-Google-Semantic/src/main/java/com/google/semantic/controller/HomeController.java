@@ -8,11 +8,12 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.semantic.bean.RedditTokenBean;
 import com.google.semantic.bean.TwitterRequestBean;
 import com.google.semantic.response.SentimentResponseBean;
 import com.google.semantic.response.SentimentWrapperResponse;
@@ -27,11 +28,9 @@ public class HomeController {
 	@PostMapping("/home")
 	public SentimentWrapperResponse getLanguageAnalysis(@RequestBody TwitterRequestBean twitterRequestBean)
 			throws IOException {
-		final Logger logger = LoggerFactory.getLogger(this.getClass());
-		logger.info("Inside the method SentimentWrapperResponse getLanguageAnalysis()");
-		//List<SentimentResponseBean> responseList = null;
+		final Logger logger = LoggerFactory.getLogger(this.getClass());		
+		//logger.info("Inside the method SentimentWrapperResponse getLanguageAnalysis()");
 		return languageAnalyzeService.languageAnalysis(twitterRequestBean);
-
 	}
 
 }
